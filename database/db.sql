@@ -24,3 +24,9 @@ select c.name Customers from customers c left join orders o on c.id = o.customer
 -- 577. Employee Bonus  #mssql
 select e.name, b.bonus from employee e left join bonus b on e.empId = b.empId where b.bonus < 1000 or b.bonus is null;
 
+-- 178. Rank Scores #mssql
+SELECT score, DENSE_RANK() OVER (ORDER BY score DESC) `rank` FROM Scores ORDER BY score DESC;
+
+-- 181. Employees Earning More Than Their Managers #mssql
+select e.name Employee from Employee e join Employee e2 on e.managerId = e2.id where e.salary > e2.salary;
+
