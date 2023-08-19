@@ -13,8 +13,15 @@ example3_arg2 = "title"
 example3_out = True
 
 
-class Solution:
-    def isIsomorphic(self, s: str, t: str) -> bool:
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        list1, list2 = [], []
+        for idx in s:
+            list1.append(s.index(idx))
+        for idx in t:
+            list2.append(t.index(idx))
+        if list1 == list2:
+            return True
         return False
 
 
