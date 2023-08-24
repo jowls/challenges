@@ -5,7 +5,8 @@
 // is longer than the other, append the additional letters onto the end
 // of the merged string. Return the merged string.
 
-public class Solution {
+public class Solution1768
+{
     public string MergeAlternately(string word1, string word2) {
         string result = "";
         int w1l = word1.Length;
