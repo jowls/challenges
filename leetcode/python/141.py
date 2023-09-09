@@ -1,6 +1,7 @@
 # 141. Linked List Cycle
 
 from typing import List, Optional
+from linklist import ListNode, init_looped_linked_list
 
 example1_arg1 = [3, 2, 0, -4]
 example1_arg2 = 1
@@ -52,13 +53,6 @@ example5_arg2 = -1
 example5_out = False
 
 
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if not head:
@@ -73,28 +67,6 @@ class Solution:
             if f == s:
                 return True
         return False
-
-
-def init_looped_linked_list(values, pos):
-    if not values:
-        return None
-
-    head = ListNode(values[0])
-    current = head
-    loop = None
-
-    i = 0
-    for val in values[1:]:
-        new_node = ListNode(val)
-        current.next = new_node
-        if i == pos:
-            loop = current
-        current = new_node
-        i += 1
-    if loop:
-        current.next = loop
-
-    return head
 
 
 print(

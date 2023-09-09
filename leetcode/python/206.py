@@ -1,21 +1,13 @@
 # 206. Reverse Linked List
 
 from typing import List, Optional
+from linklist import ListNode, init_looped_linked_list, values_from_linked_list
 
 example1_arg1 = [1, 2, 3, 4, 5]
-example1_arg2 = -1
 example1_out = [5, 4, 3, 2, 1]
 
 example2_arg1 = [1, 2]
-example2_arg2 = -1
 example2_out = [2, 1]
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
 
 
 class Solution:
@@ -65,58 +57,20 @@ class Solution:
         return values_from_linked_list(reversed_head)
 
 
-def init_looped_linked_list(values, pos):
-    if not values:
-        return None
-
-    head = ListNode(values[0])
-    current = head
-    loop = None
-
-    i = 0
-    for val in values[1:]:
-        new_node = ListNode(val)
-        current.next = new_node
-        if i == pos:
-            loop = current
-        current = new_node
-        i += 1
-    if loop:
-        current.next = loop
-
-    return head
-
-
-def values_from_linked_list(head):
-    result = [head.val]
-    while head.next:
-        head = head.next
-        result.append(head.val)
-    return result
-
-
 print(
-    Solution().reverseListIterative(
-        init_looped_linked_list(example1_arg1, example1_arg2)
-    )
+    Solution().reverseListIterative(init_looped_linked_list(example1_arg1))
     == example1_out
 )
 print(
-    Solution().reverseListIterative(
-        init_looped_linked_list(example2_arg1, example2_arg2)
-    )
+    Solution().reverseListIterative(init_looped_linked_list(example2_arg1))
     == example2_out
 )
 
 print(
-    Solution().reverseListRecursive(
-        init_looped_linked_list(example1_arg1, example1_arg2)
-    )
+    Solution().reverseListRecursive(init_looped_linked_list(example1_arg1))
     == example1_out
 )
 print(
-    Solution().reverseListRecursive(
-        init_looped_linked_list(example2_arg1, example2_arg2)
-    )
+    Solution().reverseListRecursive(init_looped_linked_list(example2_arg1))
     == example2_out
 )

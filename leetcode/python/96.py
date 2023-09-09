@@ -1,25 +1,17 @@
 # 96. Reverse Linked List II
 
 from typing import List, Optional
+from linklist import ListNode, init_looped_linked_list, values_from_linked_list
 
 example1_arg1 = [1, 2, 3, 4, 5]
-example1_arg2 = -1
-example1_arg3 = 2
-example1_arg4 = 4
+example1_arg2 = 2
+example1_arg3 = 4
 example1_out = [1, 4, 3, 2, 5]
 
 example2_arg1 = [5]
-example2_arg2 = -1
+example2_arg2 = 1
 example2_arg3 = 1
-example2_arg4 = 1
 example2_out = [5]
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
 
 
 class Solution:
@@ -33,8 +25,10 @@ class Solution:
 
         l = left - 1  # zero-indexed left
         r = right - 1  # zero-indexed right
-        fake_head = ListNode(0)
-        fake_head.next = head
+
+        # dummy setup
+        fake_head = ListNode(0, next=head)
+
         prev = fake_head
         cur = head
 
@@ -90,49 +84,19 @@ class Solution:
         return values_from_linked_list(head)
 
 
-def init_looped_linked_list(values, pos):
-    if not values:
-        return None
-
-    head = ListNode(values[0])
-    current = head
-    loop = None
-
-    i = 0
-    for val in values[1:]:
-        new_node = ListNode(val)
-        current.next = new_node
-        if i == pos:
-            loop = current
-        current = new_node
-        i += 1
-    if loop:
-        current.next = loop
-
-    return head
-
-
-def values_from_linked_list(head):
-    result = [head.val]
-    while head.next:
-        head = head.next
-        result.append(head.val)
-    return result
-
-
 print(
     Solution().reverseBetween(
-        init_looped_linked_list(example1_arg1, example1_arg2),
+        init_looped_linked_list(example1_arg1),
+        example1_arg2,
         example1_arg3,
-        example1_arg4,
     )
     == example1_out
 )
 print(
     Solution().reverseBetween(
-        init_looped_linked_list(example2_arg1, example2_arg2),
+        init_looped_linked_list(example2_arg1),
+        example2_arg2,
         example2_arg3,
-        example2_arg4,
     )
     == example2_out
 )
