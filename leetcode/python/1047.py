@@ -18,6 +18,3 @@ def test():
     assert solver.removeDuplicates("abbaca") == "ca"
     assert solver.removeDuplicates("azxxzy") == "ay"
     print("All tests passed!")
-
-
-test()

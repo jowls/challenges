@@ -36,6 +36,3 @@ def test():
     )
 
     print("All tests passed!")
-
-
-test()

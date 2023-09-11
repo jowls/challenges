@@ -32,6 +32,3 @@ def test():
     assert solver.removeNodes(init_looped_linked_list([5, 2, 13, 3, 8])) == [13, 8]
     assert solver.removeNodes(init_looped_linked_list([1, 1, 1, 1])) == [1, 1, 1, 1]
     print("All tests passed!")
-
-
-test()

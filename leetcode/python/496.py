@@ -50,6 +50,3 @@ def test():
     assert solver.nextGreaterElementV1([2, 4], [1, 2, 3, 4]) == [3, -1]
 
     print("All tests passed!")
-
-
-test()

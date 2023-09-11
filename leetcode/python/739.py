@@ -39,6 +39,3 @@ def test():
     assert solver.dailyTemperatures([30, 40, 50, 60]) == [1, 1, 1, 0]
     assert solver.dailyTemperatures([30, 60, 90]) == [1, 1, 0]
     print("All tests passed!")
-
-
-test()
