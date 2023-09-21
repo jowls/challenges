@@ -50,6 +50,9 @@ def values_from_linked_list(head: ListNode) -> list[int]:
     :param head: The head node of the linked list.
     :return: List of values extracted from the linked list.
     """
+    if not head:
+        return []
+
     result = [head.val]
     while head.next:
         head = head.next
