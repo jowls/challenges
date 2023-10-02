@@ -12,29 +12,23 @@
 
 from typing import List
 
-example1_arg1 = [3, 2, 2, 3]
-example1_arg2 = 3
-example1_out = 2
-
-example2_arg1 = [0, 1, 2, 2, 3, 0, 4, 2]
-example2_arg2 = 2
-example2_out = 5
-
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        nums_len = len(nums)
-        i = 0
-        while i < nums_len:
-            if nums[i] == val:
-                nums.pop(i)
-                nums_len -= 1
-            else:
-                i += 1
-        print(nums)
-        print(len(nums))
-        return len(nums)
+        idx = 0
+
+        for i in nums:
+            if i != val:
+                nums[idx] = i
+                idx += 1
+
+        return idx
 
 
-print(Solution().removeElement(example1_arg1, example1_arg2) == example1_out)
-print(Solution().removeElement(example2_arg1, example2_arg2) == example2_out)
+def test():
+    solver = Solution()
+
+    assert solver.removeElement([3, 2, 2, 3], 3) == 2
+    assert solver.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2) == 5
+
+    print("All tests passed!")
