@@ -2,8 +2,17 @@
 
 
 class Solution:
-    # O(n)
+    # O(n) bottom-up
     def climbStairs(self, n: int) -> int:
+        first, second = 1, 1
+
+        for i in range(n - 1):
+            first, second = first + second, first
+
+        return first
+
+    # O(n) top-down
+    def climbStairsV1(self, n: int) -> int:
         memo = [0] * (n + 1)
 
         def dfs(n, memo):
