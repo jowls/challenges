@@ -21,7 +21,7 @@ class Trie:
         """Add a given num_word to the Trie
 
         Args:
-            num_word: spelled out number to add
+            num_word: Spelled out number to add
         """
 
         prev = self.root
@@ -34,10 +34,10 @@ class Trie:
         """Search for a given num_word within the Trie
 
         Args:
-            num_word: spelled out number to seach for
+            num_word: Spelled out number to seach for
 
         Returns:
-            (bool to indicate whether num_word was found, the word value if found otherwise an empty string)
+            (Bool to indicate whether num_word was found, The word value if found otherwise an empty string)
         """
         prev = self.root
         for c in num_word:
