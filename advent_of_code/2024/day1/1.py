@@ -3,42 +3,29 @@ from collections import defaultdict
 IN_FILE_PATH = "advent_of_code/2024/day1/1.txt"
 
 
-def day_1a(infile):
+def parse_list_data(infile):
     with open(infile, "r") as file:
-        lines = file.readlines()
+        return [tuple(map(int, line.split())) for line in file]
 
-    map0 = []
-    map1 = []
-    for line in lines:
-        map_parts = line.split()
-        map0.append(int(map_parts[0]))
-        map1.append(int(map_parts[1]))
 
-    diff = 0
-    map0.sort()
-    map1.sort()
+def day_1a(infile):
+    list_data = parse_list_data(IN_FILE_PATH)
 
-    for i in range(len(map0)):
-        diff += abs(map0[i] - map1[i])
+    list0, list1 = zip(*list_data)
+    list0, list1 = sorted(list0), sorted(list1)
 
-    return diff
+    return sum(abs(a - b) for a, b in zip(list0, list1))
 
 
 def day_1b(infile):
-    with open(infile, "r") as file:
-        lines = file.readlines()
+    list_data = parse_list_data(IN_FILE_PATH)
 
-    map0 = []
-    map1 = []
+    list0, list1 = zip(*list_data)
+
     similarity = defaultdict(int)
-    for line in lines:
-        map_parts = line.split()
-        map0.append(int(map_parts[0]))
-        map1.append(int(map_parts[1]))
-
-    for i in range(len(map0)):
-        if map1[i] in map0:
-            similarity[map1[i]] += 1
+    for i in range(len(list0)):
+        if list1[i] in list0:
+            similarity[list1[i]] += 1
 
     return sum(k * v for k, v in similarity.items())
 
