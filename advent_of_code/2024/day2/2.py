@@ -2,7 +2,6 @@ IN_FILE_PATH = "advent_of_code/2024/day2/2.txt"
 
 
 def parse_reports(infile: str) -> list[dict]:
-    report_list = []
     with open(infile, "r") as file:
         return [[int(x) for x in line.strip().split()] for line in file]
 
